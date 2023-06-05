@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>商品一覧</title>
+</head>
+<body>
+<h1>商品一覧</h1>
+<table border="1">
+  <thead>
+  <tr>
+    <th>id</th><th>名前</th><th>値段</th>
+  </tr>
+  </thead>
+  <tbody>
+  <!-- データをループで表示 -->
+  <tr th:each="product : ${products}">
+    <td><a th:href="'/product/' + ${product.id}" th:text="${product.id}"></a></td>
+    <td th:text="${product.name}"></td>
+    <td th:text="${product.price}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
