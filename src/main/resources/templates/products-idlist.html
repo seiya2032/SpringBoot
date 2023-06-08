@@ -9,13 +9,23 @@
 <table>
   <tbody>
   <!-- データをループで表示 -->
-  <tr th:each="product : ${products}">
+
     <p <td>id:<span th:text="${product.id}"></span></td></p>
     <p <td>商品名:<span th:text="${product.name}"></span></td></p>
     <p <td>値段:<span th:text="${product.price}"></span></td></p>
-  </tr>
+
 
   </tbody>
 </table>
+<td>
+<form th:action="'/product/update/' + ${product.id}" method="get" >
+  <p><button type="submit">修正</button></p>
+</form>
+</td>
+<td>
+<form th:action="'/product/delete/' + ${product.id}" method="post" >
+  <p><button type="submit">削除</button></p>
+</form>
+</td>
 </body>
 </html>

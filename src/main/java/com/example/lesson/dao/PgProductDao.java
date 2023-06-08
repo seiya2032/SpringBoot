@@ -42,26 +42,28 @@ public class PgProductDao implements ProductDao{
 
     @Override
     public int insert(ProductRecord user) {
-        //　オブジェクト　paramを作成
-        MapSqlParameterSource param = new MapSqlParameterSource();
-        // paramオブジェクトに""（名前）（値）を追加しています
-        param.addValue("id", user.id());
-        param.addValue("name", user.name());
-        param.addValue("price", user.price());
-        // SQLのクリエをDBで実行　
-        return jdbcTemplate.update("INSERT INTO products VALUES(:id, :name, :price)",param);
+//        //　オブジェクト　paramを作成
+//        MapSqlParameterSource param = new MapSqlParameterSource();
+//        // paramオブジェクトに""（名前）（値）を追加しています
+//        param.addValue("id", user.id());
+//        param.addValue("name", user.name());
+//        param.addValue("price", user.price());
+//        // SQLのクリエをDBで実行　
+//        return jdbcTemplate.update("INSERT INTO products VALUES(:id, :name, :price)",param);
+        return 0;
     }
 
     @Override
     public int update(ProductRecord id) {
         // オブジェクト　paramを作成
-        MapSqlParameterSource param = new MapSqlParameterSource();
-        // paramオブジェクトに""（名前）（値）を追加しています
-        param.addValue("id", id.id());
-        param.addValue("name", id.name());
-        param.addValue("price", id.price());
-        // SQLのクリエをDBで実行
-        return jdbcTemplate.update("UPDATE products SET name = :name, price = :price WHERE id = :id", param);
+//        MapSqlParameterSource param = new MapSqlParameterSource();
+//        // paramオブジェクトに""（名前）（値）を追加しています
+//        param.addValue("id", id.id());
+//        param.addValue("name", id.name());
+//        param.addValue("price", id.price());
+//        // SQLのクリエをDBで実行
+//        return jdbcTemplate.update("UPDATE products SET name = :name, price = :price WHERE id = :id", param);
+        return 0;
     }
 
     @Override

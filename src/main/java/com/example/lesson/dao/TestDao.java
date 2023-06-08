@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+// import static com.sun.tools.javac.tree.TreeInfo.name;
+// import static org.springframework.web.servlet.function.RequestPredicates.param;
+
 @Repository
 public class TestDao {
 
@@ -38,12 +41,35 @@ public class TestDao {
         return list.isEmpty() ? null : list.get(0);
     }
 
-//    public List<TestController.User> getUserList() {
-//        return List.of(
-//                new TestController.User("Yamada", "admin"),
-//                new TestController.User("Saito", "admin"),
-//                new TestController.User("Kimura", "user"),
-//                new TestController.User("Nakayama", "user")
-//        );
-//    }
+    public int insert(ProductRecord record) {
+        //　オブジェクト　paramを作成
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        // paramオブジェクトに""（名前）（値段）を追加しています
+        param.addValue("name", record.name());
+        param.addValue("price", record.price());
+        System.out.println("insert");
+        // SQLのクリエをDBで実行　
+        return jdbcTemplate.update("INSERT INTO products (name, price) VALUES(:name, :price)",param);
+    }
+
+    public int update(ProductRecord record) {
+//         オブジェクト　paramを作成
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        // paramオブジェクトに""（名前）（値）を追加しています
+        param.addValue("id", record.id());
+        param.addValue("name", record.name());
+        param.addValue("price", record.price());
+        // SQLのクリエをDBで実行
+        return jdbcTemplate.update("UPDATE products SET name = :name, price = :price WHERE id = :id", param);
+
+    }
+
+    public int delete(int id) {
+        // オブジェクト　paramを作成
+        MapSqlParameterSource param = new MapSqlParameterSource();
+        // paramオブジェクトに""（名前）（値）を追加しています
+        param.addValue("id", id);
+        // SQLのクリエをDBで実行
+        return jdbcTemplate.update("DELETE FROM products WHERE id = :id;", param);
+    }
 }
